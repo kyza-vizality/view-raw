@@ -1,4 +1,4 @@
-const { Plugin } = require("@vizality/core");
+const { Plugin } = require("@vizality/entities");
 const { push: openModal } = require("@vizality/webpack").modal;
 const {
 	react: { findInReactTree },
