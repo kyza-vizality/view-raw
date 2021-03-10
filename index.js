@@ -17,26 +17,24 @@ const MessageContextMenu = getModule(
 );
 const MiniPopover = getModule((m) => m?.default?.displayName === "MiniPopover");
 
-module.exports = class ViewRaw extends (
-	Plugin
-) {
-	onStart() {
-		vizality.api.settings.registerSettings(this.entityID, {
-			category: this.entityID,
-			label: "View Raw",
-			render: (p) =>
-				React.createElement(Settings, {
-					repatch: () => this.addButtons(true),
-					...p,
-				}),
-		});
+module.exports = class ViewRaw extends Plugin {
+	start() {
+		// vizality.api.settings.registerSettings(this.entityID, {
+		// 	category: this.entityID,
+		// 	label: "View Raw",
+		// 	render: (p) =>
+		// 		React.createElement(Settings, {
+		// 			repatch: () => this.addButtons(true),
+		// 			...p,
+		// 		}),
+		// });
 		this.injectStyles("style.css");
 
 		this.addButtons();
 	}
 
-	onStop() {
-		vizality.api.settings.unregisterSettings(this.entityID);
+	stop() {
+		// vizality.api.settings.unregisterSettings(this.entityID);
 		this.addButtons(true, true);
 		document
 			.querySelectorAll(".view-raw-button")
